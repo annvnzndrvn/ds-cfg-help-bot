@@ -2,10 +2,8 @@
 const Discord = require("discord.js");
 
 var talkModule = require('./talkModule');
-
 var dictionaries = require('./dictionaries');
-
-var request = require("request");
+var configModule = require('./configModule');
 
 const devToken = 'your_dev_token';
 const token = 'your_prod_token';
@@ -14,8 +12,14 @@ const bot = new Discord.Client();
 
 var isReconnected;
 
+var botSetup;
+
 bot.on("ready", () => {
 	isReconnected = false;
+
+    botSetup = configModule.readConfig();
+
+    console.log(botSetup);
 });
 
 
