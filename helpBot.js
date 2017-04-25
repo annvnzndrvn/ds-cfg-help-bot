@@ -13,20 +13,38 @@ const bot = new Discord.Client();
 var isReconnected;
 
 var botSetup;
+var greetChannel = new Discord.Channel();
 
 bot.on("ready", () => {
 	isReconnected = false;
 
     botSetup = configModule.readConfig();
+    
+    for (let config = 0; config < botSetup.length; config++) {
 
-    console.log(botSetup);
+        if (botSetup[config].parameter == '&setGreetChannel') {
+            var channelID = botSetup[config].value;
+            greetChannel = bot.channels.get(channelID);
+        }            
+    }
+
+});
+
+
+bot.on('presenceUpdate', (user) => {
+
+  var previousStatus = user.frozenPresence.status;
+
+  if (previousStatus == 'offline') {
+
+    greetChannel.sendMessage('welcome ma gurrl!');
+
+  }
+
 });
 
 
 bot.on("message", message => {
-	silence = 0;
-
-	console.log(message.content);
 
 	var input = message.content;
 });
