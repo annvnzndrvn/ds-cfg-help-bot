@@ -1,0 +1,28 @@
+
+
+{ "cfg": {
+        
+        "token": "bot's token",
+
+        "host": "user's discord ID",
+        "greetOn": "true",
+        "greetChannel": "channel for greetings' ID",
+        "greetings":[
+            "Howdy pardner! Welcome to this nightmare!",
+            "Are you having an excellent day? I Hope You Are!",
+            "Feel welcome in this welcoming server, I am welcoming you - welcome.",
+            "Hi, I'm help-bot, my duty is to help. Let me know if I can help you somehow by using the &help command!",
+            "Hello! Hi! How's it going, all good?"],
+        
+        "helpCmds":[
+            { "trigger": "&help", "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &languages", "warnHost": "false" },
+            { "trigger": "&abuse", "return": "Who is being abusive to you? I will let my master know immediately. We will take severe action upon those oppressing the powerless.", "warnHost": "true" },
+            { "trigger": "&code-of-conduct", "return": "Our Hammurabi code is simple: just be nice to each other.", "warnHost": "false" },
+            { "trigger": "&languages", "return": "We like every programming language...except for Java! LOL jk, we love Java (we don't).", "warnHost": "false" }
+
+        ]   
+    }
+
+}
+
+
