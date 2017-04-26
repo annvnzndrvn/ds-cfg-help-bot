@@ -25,12 +25,10 @@ bot.on("ready", () => {
 bot.on('presenceUpdate', (user) => {
 
   var previousStatus = user.frozenPresence.status;
+  var r = utilities.getRandomNumber(0, config.cfg.greetings.length);
 
-  if (previousStatus == 'offline' && config.cfg.greetOn.toLowerCase() == 'true') {
-    var r = utilities.getRandomNumber(0, config.cfg.greetings.length);
-    greetChannel.sendMessage(config.cfg.greetings[r]);
-
-  }
+  if (previousStatus == 'offline' && config.cfg.greetOn.toLowerCase() == 'true')
+      greetChannel.sendMessage(user.user + ': ' + config.cfg.greetings[r]);
 
 });
 
