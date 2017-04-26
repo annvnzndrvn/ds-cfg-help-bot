@@ -3,10 +3,8 @@ const Discord = require("discord.js");
 
 var talkModule = require('./talkModule');
 var dictionaries = require('./dictionaries');
-var configModule = require('./configModule');
-
-const devToken = 'your_dev_token';
-const token = 'your_prod_token';
+var utilities = require('./utilities');
+var config = require('./config.json');
 
 const bot = new Discord.Client();
 
@@ -16,17 +14,10 @@ var botSetup;
 var greetChannel = new Discord.Channel();
 
 bot.on("ready", () => {
+
 	isReconnected = false;
 
-    botSetup = configModule.readConfig();
-    
-    for (let config = 0; config < botSetup.length; config++) {
-
-        if (botSetup[config].parameter == '&setGreetChannel') {
-            var channelID = botSetup[config].value;
-            greetChannel = bot.channels.get(channelID);
-        }            
-    }
+    greetChannel = bot.channels.get(config.cfg.greetChannel);
 
 });
 
@@ -35,9 +26,9 @@ bot.on('presenceUpdate', (user) => {
 
   var previousStatus = user.frozenPresence.status;
 
-  if (previousStatus == 'offline') {
-
-    greetChannel.sendMessage('welcome ma gurrl!');
+  if (previousStatus == 'offline' && config.cfg.greetOn.toLowerCase() == 'true') {
+    var r = utilities.getRandomNumber(0, config.cfg.greetings.length);
+    greetChannel.sendMessage(config.cfg.greetings[r]);
 
   }
 
@@ -59,18 +50,19 @@ bot.on("disconnect", () =>
 {
     isReconnected = true;
 
-    setTimeout (Reconnect.bind(null, devToken), reconnectInterval);
+    setTimeout (Reconnect.bind(null, config.cfg.token), reconnectInterval);
 });
 
 
-function Reconnect(devToken)
+function Reconnect(tkn)
 {
     if (isReconnected == true)
     {
-        bot.login(devToken);
+        bot.login(tkn);
     }
 }
 
-bot.login(devToken);
+
+bot.login(config.cfg.token);
 
 
