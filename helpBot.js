@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 
 var talkModule = require('./talkModule');
 var dictionaries = require('./dictionaries');
+var cmdModule = require('./cmdModule');
 var utilities = require('./utilities');
 var config = require('./config.json');
 
@@ -36,6 +37,11 @@ bot.on('presenceUpdate', (user) => {
 bot.on("message", message => {
 
 	var input = message.content;
+
+    var cmd = cmdModule.parseCommand(input, config.cfg.helpCmds);
+
+    if (cmd != null)
+        message.reply(cmd.return);
 });
 
 
