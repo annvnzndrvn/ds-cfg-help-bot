@@ -14,10 +14,9 @@ module.exports = {
         return null;
     },
 
-    warnAdminAboutAbuse: function (admin, msg) {
-        admin.sendMessage('User ' 
-                                + msg.author.username + 
-                                    " claims there's been digital abuse around the guild. Investigate the matter and apprehend the culprit(s)! (if there's any, that is)");
+    warnAdmin: function (admin, cmd, msg) {
+        admin.sendMessage(cmd.warnHostMessage +                                 
+                                    ' - triggered by: ' + msg.author.username);
     }
 }
 

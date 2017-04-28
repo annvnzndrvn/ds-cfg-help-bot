@@ -45,7 +45,7 @@ bot.on("message", message => {
     if (cmd != null) {
         message.reply(cmd.return);
         if (cmd.warnHost.toLowerCase() == 'true') {
-            cmdModule.warnAdminAboutAbuse(adminUser, message);
+            cmdModule.warnAdmin(adminUser, cmd, message);
         }
     }
         
