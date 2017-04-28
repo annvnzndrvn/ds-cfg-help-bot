@@ -2,11 +2,11 @@
 
 { "cfg": {
         
-        "token": "bot's token",
+        "token": "",
 
-        "host": "user's discord ID",
+        "host": "",
         "greetOn": "true",
-        "greetChannel": "channel for greetings' ID",
+        "greetChannel": "",
         "greetings":[
             "Howdy pardner! Welcome to this nightmare!",
             "Are you having an excellent day? I Hope You Are!",
@@ -15,10 +15,28 @@
             "Hello! Hi! How's it going, all good?"],
         
         "helpCmds":[
-            { "trigger": "&help", "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &languages", "warnHost": "false" },
-            { "trigger": "&abuse", "return": "Who is being abusive to you? I will let my master know immediately. We will take severe action upon those oppressing the powerless.", "warnHost": "true" },
-            { "trigger": "&code-of-conduct", "return": "Our Hammurabi code is simple: just be nice to each other.", "warnHost": "false" },
-            { "trigger": "&languages", "return": "We like every programming language...except for Java! LOL jk, we love Java (we don't).", "warnHost": "false" }
+                {   
+                    "trigger": "&help", 
+                    "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &languages", 
+                    "warnHost": "false" ,
+                    "warnHostMessage": "undefined"
+                },
+
+                {   "trigger": "&abuse",
+                    "return": "Who is being abusive to you? I will let my master know immediately. We will take severe action upon those oppressing the powerless.", 
+                    "warnHost": "true",
+                    "warnHostMessage": "User claims there's been digital abuse around the guild. Investigate the matter and apprehend the culprit(s)! (if there's any, that is)"
+                },
+                {   "trigger": "&code-of-conduct", 
+                    "return": "Our Hammurabi code is simple: just be nice to each other.", 
+                    "warnHost": "false",
+                    "warnHostMessage": "undefined"
+                },
+                {   "trigger": "&languages", 
+                    "return": "We like every programming language...except for Java! LOL jk, we love Java (we don't).", 
+                    "warnHost": "false",
+                    "warnHostMessage": "undefined" 
+                }
 
         ]   
     }
