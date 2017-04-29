@@ -7,6 +7,7 @@ A discord help-bot which can be customized with a set of parameters loaded throu
 + helpCmds - defined with a trigger (for example: &help) that will set off the corresponding response (return parameter in JSON file).
 + greetOn - when set to TRUE, greets players to the server using any of the sentences added in the greetings array.
 + greetChannel - to store channel's ID where bot should send greetings to.
++ eventChannel - to store channel's ID where bot should send event reminders and announcements.
 + greetings - string array with greetings.
 + events - see events section for full description.
 
