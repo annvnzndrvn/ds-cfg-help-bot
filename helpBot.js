@@ -1,29 +1,28 @@
-
 const Discord = require("discord.js");
 
 var talkModule = require('./talkModule');
 var dictionaries = require('./dictionaries');
 var cmdModule = require('./cmdModule');
+var eventModule = require('./eventModule');
 var utilities = require('./utilities');
 var config = require('./config.json');
 var configModule = require('./configModule');
 
-const bot = new Discord.Client();
-
-var isReconnected;
+const bot = new Discord.Client({autoReconnect:true});
 
 var botSetup;
 var greetChannel = new Discord.Channel();
+var eventChannel = new Discord.Channel();
 var adminUser = new Discord.User();
+
+const milliseconds = 2000;
 
 bot.on("ready", () => {
 
-	isReconnected = false;
-
     greetChannel = bot.channels.get(config.cfg.greetChannel);
+    eventChannel = bot.channels.get(config.cfg.eventChannel);
     adminUser = configModule.retrieveAdminUser(bot.users, config.cfg.host);
 });
-
 
 bot.on('presenceUpdate', (user) => {
 
@@ -34,7 +33,6 @@ bot.on('presenceUpdate', (user) => {
       greetChannel.sendMessage(user.user + ': ' + config.cfg.greetings[r]);
 
 });
-
 
 bot.on("message", message => {
 
@@ -51,29 +49,21 @@ bot.on("message", message => {
         
 });
 
+function eventCheck() {
+    eventChannel = bot.channels.get(config.cfg.eventChannel);
+    eventModule.checkDeadline(config.cfg.events, eventChannel);
+    setTimeout(eventCheck, milliseconds);
+}
+
+setTimeout(eventCheck, milliseconds);
 
 process.on("unhandledRejection", err => {
   console.error("Uncaught Promise Error: \n" + err.stack);
 });
 
-
 bot.on("disconnect", () =>
 {
-    isReconnected = true;
-
-    setTimeout (Reconnect.bind(null, config.cfg.token), reconnectInterval);
+    
 });
 
-
-function Reconnect(tkn)
-{
-    if (isReconnected == true)
-    {
-        bot.login(tkn);
-    }
-}
-
-
 bot.login(config.cfg.token);
-
-
