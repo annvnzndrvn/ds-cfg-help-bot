@@ -26,8 +26,7 @@ Events are structured as follows:
 
 ### Planned customizable parameters
 + extend greetings to account for new users entering the guild vs old users returning to it.
-+ chatterBot - when set to TRUE, it will bring random topics based on existing topics in the chatTopics array.
-+ chatTopics - array with topics.
++ translatobot - special command to translate text.
 
 ## FAQ
 + **Q: Bot won't send messages to the greeter channel! What's wrong?** **A:** Make sure the greeter channel has been set correctly in JSON's greetChannel and that greetOn is set to 'true'.
