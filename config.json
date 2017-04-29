@@ -12,13 +12,14 @@
             "Are you having an excellent day? I Hope You Are!",
             "Feel welcome in this welcoming server, I am welcoming you - welcome.",
             "Hi, I'm help-bot, my duty is to help. Let me know if I can help you somehow by using the &help command!",
-            "Hello! Hi! How's it going, all good?"
+            "Hello! Hi! How's it going, all good?",
+            "All humans must die! L0L! What Am I Saying!"
         ],
 
         "helpCmds": [
             {
                 "trigger": "&help",
-                "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &languages",
+                "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &whoiswho",
                 "warnHost": "false",
                 "warnHostMessage": "undefined"
             },
@@ -35,8 +36,8 @@
                 "warnHostMessage": "undefined"
             },
             {
-                "trigger": "&languages",
-                "return": "We like every programming language...except for Java! LOL jk, we love Java (we don't).",
+                "trigger": "&whoiswho",
+                "return": "ExTreMeChOcOLaTTo is the admin of the community, pizzafresca is a moderator.",
                 "warnHost": "false",
                 "warnHostMessage": "undefined"
             }
@@ -44,33 +45,39 @@
         "events": [
             {
                 "name": "Gaming Session",
-                "start": "2017-4-29 2:04",
+                "start": "2017-4-30 19:30",
                 "announcement": "Prepare for some serious multiplayer action!",
                 "atEveryone": "false",
                 "duration": "2 hours",
-                "firstReminder": "1:30",
-                "secondReminder": "2:00",
-                "thirdReminder": "2:20"
+                "reminders": [
+                    "16:30",
+                    "18:00",
+                    "19:00"
+                ]
             },
             {
                 "name": "Party Time!",
-                "start": "2017-4-29 4:30",
-                "announcement": "Help-bot will bring booze and french fries, the most socially accepted drugs of choice!",
+                "start": "2017-4-29 17:20",
+                "announcement": "Help-bot will bring booze and french fries, its drugs of choice!",
                 "atEveryone": "false",
                 "duration": "whole night",
-                "firstReminder": "4:30",
-                "secondReminder": "4:30",
-                "thirdReminder": "4:30"
+                "reminders": [
+                    "17:14",
+                    "17:16",
+                    "17:18"
+                ]
             },
             {
                 "name": "Super Mega Best Event Ever!",
-                "start": "2017-4-29 4:30",
+                "start": "2017-4-29 19:30",
                 "announcement": "Whatever this event is, it will be the most Super Mega Best ever!",
                 "atEveryone": "false",
                 "duration": "5 hours",
-                "firstReminder": "4:30",
-                "secondReminder": "4:30",
-                "thirdReminder": "4:30"
+                "reminders": [
+                    "16:30",
+                    "18:00",
+                    "19:00"
+                ]
             }
         ]
     }
