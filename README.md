@@ -21,12 +21,10 @@ Events are structured as follows:
 | announcement  | this is the string of text that will be sent along with the event announcement once it reaches the start date.|
 | atEveryone  | when set to TRUE, it will mention everyone, otherwise it will just send the name and announcement of the event.|
 | duration  | how long the event will last.|
-| firstReminder  | TODO! |
-| secondReminder  | TODO! |
-| thirdReminder  | TODO! |
+| reminders  | list containing reminders in 00:00 format. Once it reaches the specified time, it will trigger a message to the channel |
+
 
 ### Planned customizable parameters
-+ extend events.
 + extend greetings to account for new users entering the guild vs old users returning to it.
 + chatterBot - when set to TRUE, it will bring random topics based on existing topics in the chatTopics array.
 + chatTopics - array with topics.
@@ -34,6 +32,7 @@ Events are structured as follows:
 ## FAQ
 + **Q: Bot won't send messages to the greeter channel! What's wrong?** **A:** Make sure the greeter channel has been set correctly in JSON's greetChannel and that greetOn is set to 'true'.
 + **Q: Events aren't working properly and I made sure the eventChannel is set up. What's the problem?** **A:** The date format should be like this: "2017-4-29 2:04".
++ **Q: How to find the ID of the channel to set it on the config file?** **A:** On discord desktop app, switch to developer mode and then just right click on the channel + copy ID.
 
 ### Honorable mentions
 + hydrabolt for [discord.js](https://github.com/hydrabolt/discord.js/)
