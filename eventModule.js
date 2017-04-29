@@ -1,5 +1,6 @@
 var moment = require("moment");
 var sentEventsArray = [];
+var sentRemindersArray = [];
 
 module.exports = {
 
@@ -19,7 +20,7 @@ module.exports = {
                         this.sendAnnouncement(event, eventChannel);
                 }
                 else { // send reminders
-                    
+                    this.sendReminders(event, event.reminders, eventChannel, now)
                 }
             }
         }
@@ -42,11 +43,40 @@ module.exports = {
 
             var sent = event.name;
             sentEventsArray.push(sent);
-        }       
+        }
     },
 
-    sendReminder: function (event, eventChannel) {
-        // TODO
+    sendReminders: function (event, reminders, eventChannel, now) {
+
+         for (var r = 0; r < reminders.length; r++) {
+            var reminder = moment(reminders[r], 'HH:mm') ;
+
+            if (now.hours() == reminder.hours()) {
+
+                if (now.minutes() == reminder.minutes()) {
+
+                    var sent = false;
+
+                    sentRemindersArray.forEach(function(rem) {
+
+                        if (rem.hours() == reminder.hours() && rem.minutes() == reminder.minutes()) {
+                            sent = true;
+                        }
+                    });
+
+                    if (!sent) {
+                        event.atEveryone.toLowerCase() == 'true' ? 
+                                eventChannel.sendMessage('@everyone: Event Reminder - ' + event.name + ' starting at ' + event.start + ' - Estimated duration: 3 hours.')           
+                                : eventChannel.sendMessage('Event Reminder - ' + event.name + ' starting at ' + event.start + ' - Estimated duration: 3 hours.');   
+
+                        sentRemindersArray.push(reminder);
+                    }
+
+                }
+            }
+
+        }
+
     }
 
 }
