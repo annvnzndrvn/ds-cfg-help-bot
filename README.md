@@ -5,7 +5,9 @@ A discord help-bot which can be customized with a set of parameters loaded throu
 + token - your bot's token
 + host - to store bot's application owner ID in case bot needs to reach out to her.
 + helpCmds - defined with a trigger (for example: &help) that will set off the corresponding response (return parameter in JSON file).
-+ greetOn - when set to TRUE, greets players to the server using any of the sentences added in the greetings array.
++ greetOn - when set to TRUE, greets members to the server using any of the sentences added in the greetings array.
++ greetOnReturn - if set to FALSE, help-bot will ignore members that come back to the guild and it will only send a greeting message to new members to the guild. Set this to TRUE if you want the bot to send messages to every member that goes online.
++ greetPrivate - set to TRUE to have the bot send the greeting privately or FALSE to have it sent to the greetChannel.
 + greetChannel - to store channel's ID where bot should send greetings to.
 + eventChannel - to store channel's ID where bot should send event reminders and announcements.
 + greetings - string array with greetings.
@@ -25,8 +27,7 @@ Events are structured as follows:
 
 
 ### Planned customizable parameters
-+ extend greetings to account for new users entering the guild vs old users returning to it.
-+ translatobot - special command to translate text.
++ currently no planned new customizable features.
 
 ## FAQ
 + **Q: Bot won't send messages to the greeter channel! What's wrong?** **A:** Make sure the greeter channel has been set correctly in JSON's greetChannel and that greetOn is set to 'true'.
