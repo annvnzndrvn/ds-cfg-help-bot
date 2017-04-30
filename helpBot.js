@@ -26,12 +26,33 @@ bot.on("ready", () => {
 
 bot.on('presenceUpdate', (user) => {
 
-  var previousStatus = user.frozenPresence.status;
+  if (config.cfg.greetOnReturn.toLowerCase() == 'true') {
+
+    var previousStatus = user.frozenPresence.status;
+    var r = utilities.getRandomNumber(0, config.cfg.greetings.length);
+
+    if (previousStatus == 'offline' && config.cfg.greetOn.toLowerCase() == 'true') {
+
+        config.cfg.greetPrivate.toLowerCase() == 'true' ? 
+                            user.sendMessage(user.user + ': ' + config.cfg.greetings[r])   
+                            : greetChannel.sendMessage(user.user + ': ' + config.cfg.greetings[r]);
+    }
+
+  }
+  else
+    return;
+});
+
+bot.on('guildMemberAdd', (user) => {
+
   var r = utilities.getRandomNumber(0, config.cfg.greetings.length);
 
-  if (previousStatus == 'offline' && config.cfg.greetOn.toLowerCase() == 'true')
-      greetChannel.sendMessage(user.user + ': ' + config.cfg.greetings[r]);
+  if (config.cfg.greetOn.toLowerCase() == 'true') {
 
+    config.cfg.greetPrivate.toLowerCase() == 'true' ? 
+                    user.sendMessage(user.user + ': ' + config.cfg.greetings[r])   
+                    : greetChannel.sendMessage(user.user + ': ' + config.cfg.greetings[r]);
+  }
 });
 
 bot.on("message", message => {
@@ -46,7 +67,6 @@ bot.on("message", message => {
             cmdModule.warnAdmin(adminUser, cmd, message);
         }
     }
-        
 });
 
 function eventCheck() {
