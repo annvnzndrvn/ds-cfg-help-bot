@@ -4,22 +4,24 @@
 
         "host": "",
         "greetOn": "true",
+        "greetOnReturn": "false",
+        "greetPrivate": "true",
         "greetChannel": "",
         "eventChannel": "",
 
         "greetings": [
-            "Howdy pardner! Welcome to this nightmare!",
-            "Are you having an excellent day? I Hope You Are!",
-            "Feel welcome in this welcoming server, I am welcoming you - welcome.",
+            "Howdy pardner! Welcome to this nightmare! (&help for more)",
+            "Are you having an excellent day? I Hope You Are! (&help for more)",
+            "Feel welcome in this welcoming server, I am welcoming you - welcome. (&help for more)",
             "Hi, I'm help-bot, my duty is to help. Let me know if I can help you somehow by using the &help command!",
-            "Hello! Hi! How's it going, all good?",
-            "All humans must die! L0L! What Am I Saying!"
+            "Hello! Hi! How's it going, all good? (&help for more)",
+            "All humans must die! L0L! What Am I Saying! (&help for more)"
         ],
 
         "helpCmds": [
             {
                 "trigger": "&help",
-                "return": "That's right, I'm here to help! What is it you need help with? &abuse, &code-of-conduct, &whoiswho",
+                "return": "That's right, I'm here to help! What is it you need help with? (&code-of-conduct, &whoiswho, &abuse)",
                 "warnHost": "false",
                 "warnHostMessage": "undefined"
             },
